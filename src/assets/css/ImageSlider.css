@@ -1,0 +1,66 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* desktop default */
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive height for smaller screens */
+@media (max-width: 768px) {
+  .slider-container {
+    height: 40vh; /* mobile / tablet height */
+  }
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1s ease, transform 1.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Optional: maintain aspect ratio on mobile */
+@media (max-width: 768px) {
+  .slide {
+    background-size: contain; /* images fit inside container without cropping */
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+}
+
+.active-dot {
+  background: #ff9800; /* highlight color */
+}
